@@ -1,7 +1,6 @@
 from flask import Flask, request, make_response, redirect, render_template, jsonify
 import requests
 
-
 app = Flask(__name__)
 
 
@@ -44,9 +43,15 @@ def weather():
     if r.status_code == 200:
         return jsonify(r.text)
     else:
-        print("Something went wrong")
-        return jsonify({})
+        return render_template('404.html'), 404
+
+
+app.config['SECRET_KEY'] = 'hard to guess string'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
