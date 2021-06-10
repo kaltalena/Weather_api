@@ -49,10 +49,13 @@ def weather():
 
 app.config['SECRET_KEY'] = 'hard to guess string'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+port = os.getenv('PORT')
 
+if not port:
+    port = 5081
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT"))
+    app.run(host="127.0.0.1", port=port)
 
 
 
