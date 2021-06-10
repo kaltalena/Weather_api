@@ -1,5 +1,6 @@
 from flask import Flask, request, make_response, redirect, render_template, jsonify
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -51,7 +52,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=os.getenv("PORT"))
 
 
 
